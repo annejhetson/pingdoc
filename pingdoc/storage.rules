@@ -1,0 +1,17 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    // Allow authenticated users to upload PDFs to their own pending folder
+    match /pending/{userId}/{fileName} {
+      allow read, write: if request.auth != null 
+                        && request.auth.uid == userId 
+                        && request.resource.contentType.matches('application/pdf')
+                        && request.resource.size <= 5 * 1024 * 1024; // 5MB max
+    }
+
+    // Allow authenticated users to read their own completed PDFs
+    match /completed/{userId}/{fileName} {
+      allow read: if request.auth != null && request.auth.uid == userId;
+    }
+  }
+} 

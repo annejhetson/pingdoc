@@ -7,33 +7,33 @@ Aim for small, focused commits: one micro-step per commit, with tests passing be
 
 ## Phase 0 – Environment & CI
 
-- [ ] **0.1 Repo Scaffold**
+- [x] **0.1 Repo Scaffold**
 
-  - [ ] Run `npx create-next-app vibesign --typescript --tailwind --eslint`
-  - [ ] Add `.nvmrc` (Node 20) and NPM configuration
-  - [ ] Verify `npm run dev` starts the development server
-  - [ ] Commit initial scaffold and add a CI badge to README
+  - [x] Run `npx create-next-app vibesign --typescript --tailwind --eslint`
+  - [x] Add `.nvmrc` (Node 20) and NPM configuration
+  - [x] Verify `npm run dev` starts the development server
+  - [x] Commit initial scaffold and add a CI badge to README
 
-- [ ] **0.2 Prettier & ESLint**
+- [x] **0.2 Prettier & ESLint**
 
-  - [ ] Install and configure Prettier (e.g., `.prettierrc`)
-  - [ ] Install and configure ESLint with Next.js/TypeScript presets
-  - [ ] Add `lint` and `format` scripts to `package.json`
-  - [ ] Run `npm run lint --fix` to ensure no lint errors remain
+  - [x] Install and configure Prettier (e.g., `.prettierrc`)
+  - [x] Install and configure ESLint with Next.js/TypeScript presets
+  - [x] Add `lint` and `format` scripts to `package.json`
+  - [x] Run `npm run lint --fix` to ensure no lint errors remain
 
-- [ ] **0.3 Firebase Project & Emulator Suite**
+- [ ] **0.3 Firebase Project & Emulators**
 
-  - [ ] Create or select a Firebase project
-  - [ ] Run `firebase init` and enable Firestore, Storage, Functions, Emulators
-  - [ ] Add `firebase.json`, `firestore.rules`, `storage.rules`
-  - [ ] Configure `firebase.json` to start Firestore, Auth, Functions, and Storage emulators
-  - [ ] Verify `firebase emulators:start` runs without error
+  - [x] Create new Firebase project
+  - [x] Initialize Firebase with Auth, Firestore, Storage, Functions
+  - [x] Set up local emulators for development
+  - [ ] Install Java Runtime for Firebase emulators
+  - [ ] Add emulator connection code to app
 
-- [ ] **0.4 GitHub Actions CI**
-  - [ ] Create `.github/workflows/ci.yml`
-    - [ ] Set up Node 20 environment
-    - [ ] Run `npm install`, `npm run lint`, `npm test`, `npm run build`
-  - [ ] Push a test commit and confirm CI passes
+- [x] **0.4 GitHub Actions CI**
+  - [x] Create `.github/workflows/ci.yml`
+    - [x] Set up Node 20 environment
+    - [x] Run `npm install`, `npm run lint`, `npm test`, `npm run build`
+  - [x] Push a test commit and confirm CI passes
   - [ ] Ensure branch protection is configured (if desired)
 
 ---
@@ -432,6 +432,14 @@ Aim for small, focused commits: one micro-step per commit, with tests passing be
   - [ ] Tag `v1.0.0` in Git (`git tag v1.0.0`)
   - [ ] Run `npm run deploy` to production Firebase project
   - [ ] Update README with production URL and any usage notes
+
+---
+
+## Next Steps
+1. Install Java Runtime Environment (JRE) for Firebase emulators
+2. Test emulators with basic Firebase functionality
+3. Set up Firebase client configuration in the Next.js app
+4. Begin implementing authentication features
 
 ---
 
