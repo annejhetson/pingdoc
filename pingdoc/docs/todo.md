@@ -26,8 +26,8 @@ Aim for small, focused commits: one micro-step per commit, with tests passing be
   - [x] Create new Firebase project
   - [x] Initialize Firebase with Auth, Firestore, Storage, Functions
   - [x] Set up local emulators for development
-  - [ ] Install Java Runtime for Firebase emulators
-  - [ ] Add emulator connection code to app
+  - [x] Install Java Runtime for Firebase emulators
+  - [x] Add emulator connection code to app
 
 - [x] **0.4 GitHub Actions CI**
   - [x] Create `.github/workflows/ci.yml`
@@ -211,7 +211,7 @@ Aim for small, focused commits: one micro-step per commit, with tests passing be
           /* array of field placements */
         ],
         "sentAt": null,
-        "signedAt": null
+        "signedAt": null,
       }
       ```
     - [ ] Save `coords` as an array in Firestore (update on each placement)
@@ -282,8 +282,7 @@ Aim for small, focused commits: one micro-step per commit, with tests passing be
   - [ ] On `/sign`, above the sign interface, render:
     ```jsx
     <label>
-      <input type='checkbox' id='esigConsent' />I agree to sign this document
-      electronically.
+      <input type="checkbox" id="esigConsent" />I agree to sign this document electronically.
     </label>
     ```
     - [ ] Disable the "Finish" and "Decline" buttons until `#esigConsent` is checked
@@ -436,6 +435,7 @@ Aim for small, focused commits: one micro-step per commit, with tests passing be
 ---
 
 ## Next Steps
+
 1. Install Java Runtime Environment (JRE) for Firebase emulators
 2. Test emulators with basic Firebase functionality
 3. Set up Firebase client configuration in the Next.js app
