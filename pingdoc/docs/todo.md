@@ -21,13 +21,14 @@ Aim for small, focused commits: one micro-step per commit, with tests passing be
   - [x] Add `lint` and `format` scripts to `package.json`
   - [x] Run `npm run lint --fix` to ensure no lint errors remain
 
-- [ ] **0.3 Firebase Project & Emulators**
+- [x] **0.3 Firebase Project & Emulators**
 
   - [x] Create new Firebase project
   - [x] Initialize Firebase with Auth, Firestore, Storage, Functions
   - [x] Set up local emulators for development
   - [x] Install Java Runtime for Firebase emulators
   - [x] Add emulator connection code to app
+  - [x] Configure Storage rules for secure file access
 
 - [x] **0.4 GitHub Actions CI**
   - [x] Create `.github/workflows/ci.yml`
@@ -40,15 +41,15 @@ Aim for small, focused commits: one micro-step per commit, with tests passing be
 
 ## Phase 1 – Auth & Routing
 
-- [ ] **1.1 Google Authentication (Sender)**
+- [x] **1.1 Google Authentication (Sender)**
 
-  - [ ] Install Firebase client SDK (`firebase`) and admin SDK (`firebase-admin`)
-  - [ ] Install `next-firebase-auth-edge` (or similar) for Next.js 15 support
-  - [ ] Add Firebase config variables to `.env.local.example` (`NEXT_PUBLIC_FIREBASE_API_KEY`, etc.)
-  - [ ] Create `firebaseClient.ts` (initialize Firebase in browser) and `firebaseAdmin.ts` (initialize in server)
-  - [ ] Build `/app/login/page.tsx` with a "Continue with Google" button
-  - [ ] Implement a `useAuth()` hook that returns `{ user, loading }`
-  - [ ] Write an RTL unit test: when not signed in, the "Continue with Google" button appears
+  - [x] Install Firebase client SDK (`firebase`) and admin SDK (`firebase-admin`)
+  - [x] Install `next-firebase-auth-edge` (or similar) for Next.js 15 support
+  - [x] Add Firebase config variables to `.env.local.example` (`NEXT_PUBLIC_FIREBASE_API_KEY`, etc.)
+  - [x] Create `firebaseClient.ts` (initialize Firebase in browser) and `firebaseAdmin.ts` (initialize in server)
+  - [x] Build `/app/login/page.tsx` with a "Continue with Google" button
+  - [x] Implement a `useAuth()` hook that returns `{ user, loading }`
+  - [x] Write an RTL unit test: when not signed in, the "Continue with Google" button appears
 
 - [ ] **1.2 Protected Routes & Dashboard Stub**
   - [ ] Create a `<ProtectedRoute>` component that:
@@ -62,10 +63,10 @@ Aim for small, focused commits: one micro-step per commit, with tests passing be
 
 ## Phase 2 – Data Model & Security
 
-- [ ] **2.1 TypeScript Models & Zod Schemas**
+- [x] **2.1 TypeScript Models & Zod Schemas**
 
-  - [ ] Install Zod (`zod`)
-  - [ ] Create `src/lib/schemas/user.ts` with:
+  - [x] Install Zod (`zod`)
+  - [x] Create `src/lib/schemas/user.ts` with:
 
     ```ts
     import { z } from 'zod';
@@ -77,7 +78,7 @@ Aim for small, focused commits: one micro-step per commit, with tests passing be
     });
     ```
 
-  - [ ] Create `src/lib/schemas/request.ts` with:
+  - [x] Create `src/lib/schemas/request.ts` with:
 
     ```ts
     import { z } from 'zod';
@@ -97,7 +98,7 @@ Aim for small, focused commits: one micro-step per commit, with tests passing be
     });
     ```
 
-  - [ ] Write a small unit test that `UserSchema` and `RequestSchema` successfully parse valid objects and reject invalid ones
+  - [x] Write a small unit test that `UserSchema` and `RequestSchema` successfully parse valid objects and reject invalid ones
 
 - [ ] **2.2 Firestore Security Rules**
 
@@ -139,45 +140,45 @@ Aim for small, focused commits: one micro-step per commit, with tests passing be
 
 ## Phase 3 – Upload & Preview
 
-- [ ] **3.1 PDF File Input Component**
+- [x] **3.1 PDF File Input Component**
 
-  - [ ] Create `components/FileDrop.tsx` that:
-    - [ ] Renders an `<input type="file" accept="application/pdf" />`
-    - [ ] Checks file size ≤ 5 MB on selection
-    - [ ] If file > 5 MB or wrong type, shows an error toast (using your toast library of choice)
-  - [ ] Write a Jest unit test for the size/type validator function:
+  - [x] Create `components/FileDrop.tsx` that:
+    - [x] Renders an `<input type="file" accept="application/pdf" />`
+    - [x] Checks file size ≤ 5 MB on selection
+    - [x] If file > 5 MB or wrong type, shows an error toast (using your toast library of choice)
+  - [x] Write a Jest unit test for the size/type validator function:
     ```ts
     // Example: utils/isValidPdf.ts
     export function isValidPdf(file: File): boolean {
       return file.type === 'application/pdf' && file.size <= 5 * 1024 * 1024;
     }
     ```
-    - [ ] Test that a 4 MB `.pdf` returns `true`
-    - [ ] Test that a 6 MB `.pdf` returns `false`
-    - [ ] Test that a `.txt` file returns `false`
+    - [x] Test that a 4 MB `.pdf` returns `true`
+    - [x] Test that a 6 MB `.pdf` returns `false`
+    - [x] Test that a `.txt` file returns `false`
 
-- [ ] **3.2 Upload to Firebase Storage**
+- [x] **3.2 Upload to Firebase Storage**
 
-  - [ ] In `FileDrop.tsx`, upon valid selection:
-    - [ ] Generate a random `requestId` (e.g., `uuidv4()`)
-    - [ ] Call Firebase Storage's `uploadBytesResumable` to upload to `pending/{requestId}/original.pdf`
-    - [ ] Display an upload-progress bar (percentage)
-    - [ ] On success, navigate to `/editor/{requestId}`
-  - [ ] Write a Cypress test:
-    - [ ] Stub the Storage emulator
-    - [ ] Select a sample 1 MB PDF fixture from `cypress/fixtures/sample.pdf`
-    - [ ] Assert the file uploads successfully and the progress bar moves to 100%
-    - [ ] Assert that the route changes to `/editor/{requestId}`
+  - [x] In `FileDrop.tsx`, upon valid selection:
+    - [x] Generate a random `requestId` (e.g., `uuidv4()`)
+    - [x] Call Firebase Storage's `uploadBytesResumable` to upload to `pending/{requestId}/original.pdf`
+    - [x] Display an upload-progress bar (percentage)
+    - [x] On success, navigate to `/editor/{requestId}`
+  - [x] Write a Cypress test:
+    - [x] Stub the Storage emulator
+    - [x] Select a sample 1 MB PDF fixture from `cypress/fixtures/sample.pdf`
+    - [x] Assert the file uploads successfully and the progress bar moves to 100%
+    - [x] Assert that the route changes to `/editor/{requestId}`
 
-- [ ] **3.3 Render PDF Preview (pdf.js)**
-  - [ ] Install `pdfjs-dist`
-  - [ ] Create `components/PdfViewer.tsx` that:
-    - [ ] Loads `pending/{requestId}/original.pdf` via a signed URL from Storage
-    - [ ] Uses `pdfjsLib.getDocument()` to load the PDF and render the first page on a `<canvas>`
-  - [ ] Embed `<PdfViewer />` on `/editor/{requestId}`
-  - [ ] Write a Cypress test:
-    - [ ] Visit `/editor/{requestId}` with a known test PDF
-    - [ ] Assert that a `<canvas>` element is visible and non-empty
+- [x] **3.3 Render PDF Preview (pdf.js)**
+  - [x] Install `pdfjs-dist`
+  - [x] Create `components/PdfViewer.tsx` that:
+    - [x] Loads `pending/{requestId}/original.pdf` via a signed URL from Storage
+    - [x] Uses `pdfjsLib.getDocument()` to load the PDF and render the first page on a `<canvas>`
+  - [x] Embed `<PdfViewer />` on `/editor/{requestId}`
+  - [x] Write a Cypress test:
+    - [x] Visit `/editor/{requestId}` with a known test PDF
+    - [x] Assert that a `<canvas>` element is visible and non-empty
 
 ---
 
@@ -385,81 +386,4 @@ Aim for small, focused commits: one micro-step per commit, with tests passing be
     - [ ] Assert Storage files no longer exist and the table row disappears
 
 - [ ] **7.4 Download Signed PDF**
-  - [ ] For rows where `status === "SIGNED"`, show a "Download" link/button
-  - [ ] Clicking it should fetch a signed URL for `completed/{requestId}/signed.pdf` and trigger a download
-  - [ ] Write an RTL test:
-    - [ ] Mock an origin-signed URL
-    - [ ] Assert that clicking "Download" opens the URL
-
----
-
-## Phase 8 – QA & Deployment
-
-- [ ] **8.1 Cypress Happy-Path Test Suite**
-
-  - [ ] Write a Cypress spec that:
-    1. Logs in via Google (stub emulator credential)
-    2. Uploads a 100 kB sample PDF, places one "Signature" box, and sends to a test email
-    3. In a second browser context (simulate recipient), visits `/sign?t=...`, checks ESIGN, signs with typed name, clicks Finish
-    4. Assert that both sender and recipient "received" the signed email (mocked) and that `requests/{id}.status === "SIGNED"`
-
-- [ ] **8.2 Accessibility Audit (axe-core)**
-
-  - [ ] Integrate `axe-core/react` in tests
-  - [ ] Fail the CI build if any page has a WCAG 2.1 AA violation
-  - [ ] Manually test with keyboard navigation to ensure focus states
-
-- [ ] **8.3 Performance Smoke (k6)**
-
-  - [ ] Write a simple `k6` script to:
-    1. Upload a 1 MB PDF to the upload endpoint
-    2. Measure p95 latency (target < 4 s)
-  - [ ] Integrate into CI; fail if p95 > 4 s
-
-- [ ] **8.4 Deploy Scripts & Preview Channel**
-
-  - [ ] In `package.json`, add:
-    ```json
-    "scripts": {
-      "deploy:preview": "firebase deploy --only hosting,functions --project YOUR_PREVIEW_PROJECT_ID"
-    }
-    ```
-  - [ ] Verify `npm run deploy:preview` publishes to a Firebase preview site
-  - [ ] Document the preview URL in README
-
-- [ ] **8.5 Production Release**
-  - [ ] Tag `v1.0.0` in Git (`git tag v1.0.0`)
-  - [ ] Run `npm run deploy` to production Firebase project
-  - [ ] Update README with production URL and any usage notes
-
----
-
-## Next Steps
-
-1. Install Java Runtime Environment (JRE) for Firebase emulators
-2. Test emulators with basic Firebase functionality
-3. Set up Firebase client configuration in the Next.js app
-4. Begin implementing authentication features
-
----
-
-## Future Backlog (Post-MVP)
-
-> These items are on deck but **not** for MVP implementation:
-
-- [ ] Auto-compress PDFs over 5 MB
-- [ ] Sender-sign-first / Sender-sign-last modes
-- [ ] Automated reminder emails (e.g., 3 days after send)
-- [ ] Append certificate-of-completion page (audit details)
-- [ ] Admin console & usage analytics
-- [ ] Multi-recipient and signing order flows
-- [ ] Custom branding (logos, custom email templates)
-- [ ] PDF password protection / AES encryption at rest
-- [ ] Alternative ID providers (social logins, SAML)
-- [ ] Subscription or credit-pack monetization
-- [ ] Third-party integrations (Zapier, Slack, webhooks)
-
----
-
-**Guiding Principle:**  
-Each task should be small enough to complete in ≤ 30 minutes (or ≤ 50 lines of code) and tested immediately. Keep commits incremental and green. Good luck!
+  - [ ] For rows where `
